@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="calendar-nav">
+                <button id="prevMonth" aria-label="이전 달"><i class="fas fa-chevron-left"></i></button>
+                <h1 id="currentDateDisplay"></h1>
+                <button id="nextMonth" aria-label="다음 달"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <button id="todayBtn">Today</button>
+        </header>
+
+        <!-- Calendar Grid -->
+        <div class="calendar-wrapper">
+            <div class="weekdays">
+                <div class="weekday">Sun</div>
+                <div class="weekday">Mon</div>
+                <div class="weekday">Tue</div>
+                <div class="weekday">Wed</div>
+                <div class="weekday">Thu</div>
+                <div class="weekday">Fri</div>
+                <div class="weekday">Sat</div>
+            </div>
+            <div id="calendarGrid" class="days-grid">
+                <!-- Javascript will render days here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Daily Schedule -->
+    <div id="dayModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalDateTitle"></h2>
+                <button id="closeModal" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-split">
+                    <!-- Left: Timeline -->
+                    <div class="modal-left">
+                        <h3>하루 일정 (Timeline)</h3>
+                        <div id="timeTable" class="time-table-container">
+                            <!-- JS will populate time slots here -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Input Form -->
+                    <div class="modal-right">
+                        <div class="schedule-input-area">
+                            <h3>새 일정 입력</h3>
+                            <div class="form-group">
+                                <label>시간 (Start ~ End)</label>
+                                <div class="time-picker-container">
+                                    <!-- Start Time Picker -->
+                                    <div class="picker-group">
+                                        <div class="picker-label">Start</div>
+                                        <div class="picker-wrapper">
+                                            <div class="picker-viewport" id="startPickerView">
+                                                <div class="picker-wheel" id="startPickerWheel"></div>
+                                                <div class="picker-overlay"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="picker-separator">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+
+                                    <!-- End Time Picker -->
+                                    <div class="picker-group">
+                                        <div class="picker-label">End</div>
+                                        <div class="picker-wrapper">
+                                            <div class="picker-viewport" id="endPickerView">
+                                                <div class="picker-wheel" id="endPickerWheel"></div>
+                                                <div class="picker-overlay"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventTitle">내용</label>
+                                <input type="text" id="eventTitle" placeholder="일정 제목 (예: 독서)">
+                            </div>
+
+                            <div class="tags-group">
+                                <label class="checkbox-container urgent">
+                                    <input type="checkbox" id="isUrgent">
+                                    <span class="checkmark"></span>
+                                    급함
+                                </label>
+                                <label class="checkbox-container important">
+                                    <input type="checkbox" id="isImportant">
+                                    <span class="checkmark"></span>
+                                    중요
+                                </label>
+                            </div>
+
+                            <button id="addEventBtn" class="primary-btn">추가하기</button>
+
+                            <div class="input-tip">
+                                <i class="fas fa-info-circle"></i> 좌측 시간표에 일정이 추가됩니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="saveAndCloseBtn" class="secondary-btn">저장 및 닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
